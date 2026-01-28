@@ -17,8 +17,10 @@ IMG_SIZE = (224, 224)
 MODEL_PATH = "model.h5"
 CSV_PATH = "fertilizer.csv"
 
-UPLOAD_FOLDER = "uploads"  # for naming only
-CAMERA_FOLDER = "camera"   # for naming only
+UPLOAD_FOLDER = "uploads"
+CAMERA_FOLDER = "camera"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs(CAMERA_FOLDER, exist_ok=True)
 
 # =========================
 # LOAD MODEL & CSV
@@ -57,9 +59,10 @@ def predict():
         return jsonify({"error": "No file uploaded"}), 400
 
     file = request.files['file']
-
-    # Render-safe temporary path
-    img_path = os.path.join("/tmp", datetime.now().strftime('%Y%m%d%H%M%S') + ".jpg")
+    img_path = os.path.join(
+        UPLOAD_FOLDER,
+        datetime.now().strftime('%Y%m%d%H%M%S') + ".jpg"
+    )
     file.save(img_path)
     return analyze_image(img_path)
 
@@ -70,9 +73,10 @@ def predict_camera():
         return jsonify({"error": "No file uploaded"}), 400
 
     file = request.files['file']
-
-    # Render-safe temporary path
-    img_path = os.path.join("/tmp", datetime.now().strftime('%Y%m%d%H%M%S') + "_cam.jpg")
+    img_path = os.path.join(
+        CAMERA_FOLDER,
+        datetime.now().strftime('%Y%m%d%H%M%S') + ".jpg"
+    )
     file.save(img_path)
     return analyze_image(img_path)
 
@@ -132,7 +136,7 @@ def analyze_image(img_path):
         "img_path": img_path
     }
 
-    # Delete temp file
+    # Optional: delete uploaded file
     os.remove(img_path)
     return jsonify(response)
 
@@ -154,6 +158,4 @@ def invalid_response(message, img_path):
 # RUN APP
 # =========================
 if __name__ == "__main__":
-    import os
-    port = int(os.environ.get("PORT", 5000))  # Render sets this automatically
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
