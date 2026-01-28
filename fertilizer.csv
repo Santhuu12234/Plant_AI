@@ -1,0 +1,8 @@
+crop,disease,recommended_fertilizer,solution,description
+Tomato,Tomato___Early_blight,Calcium Nitrate,Use crop rotation and fungicide sprays,Early blight causes leaf yellowing and brown spots.
+Tomato,Tomato___Late_blight,DAP,Improve air circulation and apply fungicides,Late blight causes water-soaked lesions.
+Tomato,Tomato___Septoria_leaf_spot,Single Super Phosphate,Remove affected leaves and avoid overhead watering,Septoria leaf spot causes circular spots.
+Tomato,Tomato___Spider_mites,Potassium Nitrate,Apply neem oil or insecticidal soap,Spider mites cause leaf stippling and webbing.
+Tomato,Tomato___Target_Spot,14-14-14,Apply fungicides and maintain field hygiene,Target spot creates brown concentric lesions.
+Tomato,Tomato___Tomato_Yellow_Leaf_Curl_Virus,Neem Based Fertilizer,Control whiteflies and remove infected plants,This viral disease causes leaf curling and yellowing.
+Tomato,Tomato___healthy,19-19-19,Regular irrigation and pest monitoring,The tomato plant is healthy with vigorous growth.
